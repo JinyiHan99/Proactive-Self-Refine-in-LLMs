@@ -1,1 +1,1 @@
-# Proactive-Self-Refine-in-LLMs
+# Refine
