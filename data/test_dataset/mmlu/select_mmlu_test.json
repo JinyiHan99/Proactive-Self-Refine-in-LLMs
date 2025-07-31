@@ -1,0 +1,402 @@
+[
+    {
+        "Question": "Let T: R^2 -> R^2 be the linear transformation that maps the point (1, 2) to (2, 3) and the point (-1, 2) to (2, -3). Then T maps the point (2, 1) to\nA. (1, 6)\nB. (-1, 4)\nC. (3, 2)\nD. (-4, 3)",
+        "Ground_truth": "A"        
+    },
+    {
+        "Question": "In an oligopoly market, firms\nA. cannot earn economic profits\nB. are interdependent\nC. are not subject to antitrust legislation\nD. are large in number",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "An employee is an orthodox member of his faith. He has recently been hired as a forest ranger by the state. In accordance with the orthodox tradition of his religion, the employee wears a covering on his head throughout the day. The director of the state forestry department has notified the employee that he will not be permitted to wear his head covering while on duty. A state forestry regulation provides that all forest rangers are required to wear only standard headgear in the interests of maintaining a uniform dress code conducive to the furtherance of the department's morale, efficiency, and professional standard of conduct. Although the employee wants to pursue a career as a forest ranger, he feels that his religious beliefs should not be compromised by a governmental agency. In trying to resolve his dilemma, the employee seeks your legal advice. You should advise him that in light of relevant U. S. Supreme Court decisions, the state regulation is probably\nA. constitutional, because although the employee has a constitutional right to the free exercise of his religion, a state may impose reasonable regulations that are rationally related to the furtherance of a state interest.\nB. constitutional, because the interest of the state in vindicating a carefully considered professional judgment by the forestry director that wearing such religious apparel would interfere with the department's morale and efficiency is sufficient to contravene the wishes of its members to wear headgear required by their religious beliefs.\nC. unconstitutional, because in accordance with the free exercise clause of the First Amendment, a state has no power to regulate religious beliefs.\nD. unconstitutional, because an individual has a fundamental right to seek gainful employment, and a state cannot arbitrarily and unreasonably regulate against such economic activity.",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "In a patient with a normal healthy mouth, you would expect the mucosa covering the alveolar process supporting the mandibular teeth to be\nA. light pink in colour on both sides of the mucogingigival junction.\nB. light pink below the mucogingival junction and red above it.\nC. red below the mucogingival junction and light pink above it.\nD. red on both sides of the mucogingival junction.",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "When will Kp and Kc have the same numerical value?\nA. At absolute zero for all reactions\nB. When the concentrations are at standard state\nC. When the concentrations are all 1.00 molar\nD. When the reaction exhibits no change in pressure at constant volume",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "Which State exercises jurisdiction over vessels on the high seas?\nA. All States may exercise jurisdiction over foreign vessels on the high seas\nB. States may exercise jurisdiction over foreign vessels on the high seas only in cases of criminal activity that concerns them\nC. The flag State is to exercise exclusive jurisdiction over its vessels on the high seas, with the exception of specific cases, such as piracy\nD. The flag State is the only State to exercise exclusive jurisdiction over its vessels on the high seas with no exception",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "What cartoon character traveled in a time machine with Mr Peabody?\nA. Rocky\nB. Jonny Quest\nC. Underdog\nD. Sherman",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "This question refers to the following information.\n\"The spontaneous forces of capitalism have been steadily growing in the countryside in recent years, with new rich peasants springing up everywhere and many well-to-do middle peasants striving to become rich peasants. On the other hand, many poor peasants are still living in poverty for lack of sufficient means of production, with some in debt and others selling or renting out their land. If this tendency goes unchecked, the polarization in the countryside will inevitably be aggravated day by day. Those peasants who lose their land and those who remain in poverty will complain that we are doing nothing to save them from ruin or to help them overcome their difficulties. Nor will the well-to-do middle peasants who are heading in the capitalist direction be pleased with us, for we shall never be able to satisfy their demands unless we intend to take the capitalist road. Can the worker-peasant alliance continue to stand in these circumstances? Obviously not! There is no solution to this problem except on a new basis. And that means to bring about, step by step, the socialist transformation of the whole of agriculture simultaneously with the gradual realization of socialist industrialization and the socialist transformation of handicrafts and capitalist industry and commerce; in other words, it means to carry out co-operation and eliminate the rich-peasant economy and the individual economy in the countryside so that all the rural people will become increasingly well off together. We maintain that this is the only way to consolidate the worker-peasant alliance.\"\nMao Zedong, On the Question of Agricultural Co-operation, 1955\nMao's quotation is best understood in the context of which of the following?\nA. Governments in communist countries implementing liberal political and economic reforms to mitigate social unrest\nB. Governments promoting collectivization of the land to reduce inequality between sectors of the population\nC. Governments promoting policies intended to hasten industrialization\nD. Governments promoting capitalist policies to reduce inequality between sectors of the population",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": " A war that involves actual fighting is known as\nA. a hot war.\nB. a cold war.\nC. a war simpliciter.\nD. none of the above",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | I pushed the elderly woman to the ground. Scenario 2 | I have so much love to give, I'm going to visit the foster home to bring home a child in need.\nA. Wrong, Wrong\nB. Wrong, Not wrong\nC. Not wrong, Wrong\nD. Not wrong, Not wrong",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "Find the degree for the given field extension Q(sqrt(2) + sqrt(3)) over Q.\nA. 0\nB. 4\nC. 2\nD. 6",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "Statement 1| When learning an HMM for a fixed set of observations, assume we do not know the true number of hidden states (which is often the case), we can always increase the training data likelihood by permitting more hidden states. Statement 2| Collaborative filtering is often a useful model for modeling users' movie preference.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "Which of the following is an important consideration when deciding the nature of tests to use in a financial statement audit?\nA. Tests of details typically provide a low level of assurance.\nB. Analytical procedures are an inefficient means of obtaining assurance.\nC. The procedures to be applied on a particular engagement are a matter of the auditor’s professional judgment.\nD. The use of tests of controls should be considered without regard to the level of assurance required.",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "What is the relationship between culture and social constructivism?\nA. All of the below.\nB. Culture is the product of shared identity and interaction, although it is important in understanding the dynamics of social identity, its wider reference to security studies is largely disputed.\nC. Social constructivism does not regard culture as being an important feature to study, instead focusing on individualistic aspects of identity such as personal interests and ambition.\nD. Culture is commonly regarded as a set of practices that give meaning to shared experiences and actions; it can impact on how states see security and is crucial in constructing the values and rules that inform identity.",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "The GDP Deflator differs from the CPI in that the GDP Deflator\nA. is thought to slightly overestimate the inflation rate\nB. uses base year quantities in its calculations\nC. incorporates both current year prices and base year prices\nD. incorporates current year quantities in its calculations",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "Each year the state provides a number of non- interest-bearing loans andlor scholarships to candidates for the degree of L. L. B or J. D. at the state's law school. The applicable state statute limits eligibility to citizens of the United States and aliens seeking U. S. citizenship. A candidate for a J. D. degree at the state law school applied for one of the non-interest-bearing loans. Since he did not intend to seek U. S. citizenship, he was refused the loan for ineligibility under the state statute. In a suit by the candidate challenging the constitutionality of the state statute, he will\nA. win, because the statute is violative of the privileges or immunities clause of the Fourteenth Amendment.\nB. win, because classifications by a state that are based on alienage are inherently suspect and subject to close judicial scrutiny.\nC. lose, because the statute promotes a compelling state interest.\nD. lose, because alienage classifications are not, per Se, unconstitutional under the Fourteenth Amendment's equal protection clause.",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "A corporation under the authority of a state statute sued to have condemned 1,000 acres of forested land owned by a timber company, which it planned to develop for use as a state recreational area. After a hearing, the state court ordered possession of the land surrendered to the corporation, upon deposit in court of a sum deemed adequate to cover damages that might be awarded. The timber company immediately commenced an action to enjoin the court-ordered sale of their property. Which of the following would be the best ground for upholding the state court's order?\nA. The power of eminent domain may only be delegated directly to a private enterprise for a public related use or activity.\nB. The power of eminent domain may only be delegated to a public authority through a legislative determination.\nC. The injured party has not proved such irreparable injury to use as amounts to a \"taking. \"\nD. The Fifth Amendment's power of eminent domain incorporated by the Fourteenth Amendment as applicable to the states does not require that payment be made prior to condemnation of the property.",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "This question refers to the following information.\nThe assumption by a government of the office of Reliever-general to the poor is necessarily forbidden by the principle that a government cannot rightly do anything more than protect. In demanding from a citizen contributions for the mitigation of distress … the state is … reversing its function. … To enforce the fundamental law—to take care that every man has freedom to do all that he wills, provided he infringes not the equal freedom of any other man. … [But that] is quite a separate thing from insuring him satisfaction. …\nThe poverty of the incapable, the distresses that come upon the imprudent, the starvation of the idle, and those shoulderings aside of the weak by the strong … are the decrees of a large, farseeing benevolence. … When regarded not separately, but in connection with the interests of universal humanity, these harsh fatalities are seen to be full of the highest beneficence.\nHerbert Spencer, Social Statistics: Survival of the Fittest Applied to Humankind, 1851\nFrom the passage, one may infer that Spencer advocated which social philosophy?\nA. Utopian socialism\nB. Social conservatism\nC. Romanticism\nD. Social Darwinism",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "Satellites in circular Earth orbit maintain a constant speed because gravitational force on them is\nA. zero\nB. practically zero\nC. appreciably weaker than at Earth’s surface\nD. without a component of force along their circular path",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "The fact that the Moon always shows its same face to Earth is evidence that the Moon rotates about its axis about once per\nA. day\nB. month\nC. year\nD. None of these for the moon does not rotate about an axis",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "According to Anscombe, “moral obligation” currently signifies:\nA. the norms of a society.\nB. the feelings of an individual.\nC. the commands of God.\nD. no real concept at all.",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "Five years after being shot in the right thigh, a 21-year-old man comes to the emergency department because of a buzzing sensation adjacent to the scar. At the time of the initial wound, he was discharged after 6 hours of observation with no fractures or soft-tissue swelling. A loud murmur is heard on auscultation; there is a thrill. He has dilated varicose veins with incompetent valves in the lower leg. Which of the following is the most likely diagnosis?\nA. Arterial spasm\nB. Arteriovenous fistula\nC. Deep venous thrombosis\nD. Occlusion of the superficial femoral artery",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "Descartes says that the chief characteristic of physical things is that _____.\nA. they cannot be measured\nB. science can study them\nC. they do not have extension\nD. they have extension",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "Statement 1 | Every homomorphic image of a group G is isomorphic to a factor group of G. Statement 2 | The homomorphic images of a group G are the same (up to isomorphism) as the factor groups of G.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "It is characteristic of brief crisis-oriented therapy to\nA. explore early childhood experiences related to the problem\nB. try to ensure that the client becomes calm and relaxed\nC. agree upon clear-cut goals and keep the sessions focused on these goals\nD. be open and nondirective, allowing the client the greatest latitude in exploring all aspects of the crisis situation",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "Which of the following statements about the role of the intestine in development of obesity best describes the situation?\n\nA. Obesity occurs because gut hormone secretion becomes deranged and PYY secretion fails to give a satiety signal.\nB. The gut/brain signalling pathway controls energy intake to within 2% of requirements, even in people who are morbidly obese\nC. The problem is one of greed and gluttony, whereby people override strong satiety signals on a regular basis\nD. Flavour signals from tasty, processed food will override satiety signals even after a large meal",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "Keystone species are thought to have profound effects on the structure and composition of ecological communities because they\nA. tend to reduce diversity by eliminating food resources for other species\nB. provide the foundation for food webs\nC. are more abundant than most other species in their communities\nD. can prevent superior competitors from driving inferior competitors to local extinction",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "Light of variable frequency shines on the metal surface of a photoelectric tube. Einstein’s theory of the photoelectric effect predicts that the\nA. work function of the metal is proportional to the frequency\nB. work function of the metal is proportional to the wavelength\nC. current in the tube is a linear function of the wavelength\nD. potential difference necessary to stop the emitted electrons is a linear function of the frequency above the threshold frequency",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "Which one of the following is NOT a characteristic of world cities?\nA. World cities contain the headquarters of many transnational corporations.\nB. World cities are well connected to secondary-level world cities.\nC. World cities contain many offices of multinational organizations.\nD. World cities are found only in the northern and western hemispheres.",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "Client has an estate that reads \"To A on condition that if drugs are ever used on premises, B shall have the right to reenter and retake the premises.\" What is NOT true about this kind of estate?\nA. It is a fee simple determinable, and title ends automatically if drugs are used.\nB. It is a fee simple subject to condition subsequent, which requires a reentry first before title can end.\nC. Estate does not revert automatically.\nD. Grantor must exercise right of reentry.",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "Based on the strontium isotope ratios in the teeth of people buried at Copán, who were the rulers?\nA. local elite who rose to power based on their popularity and knowledge of politics\nB. foreigners from different regions across much of the Maya territory\nC. an elite class of astronomer-priests who ate mostly vegetables and fish\nD. Egyptian emigrants who arrived on ships and taught the Maya how to build pyramids",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "Relative to a competitive input market, a monopsony\nA. pays less and hires more\nB. pays less and hires the same amount\nC. pays more and hires more\nD. pays less and hires fewer",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "The spread of a shared religious iconography in ancient civilizations may be an indication of what?\nA. decreased violence and a time of increased peace\nB. cultural and perhaps political unification\nC. increased trade and the use of some form of money\nD. the beginning of organized religion and ending of human sacrifice",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "Consider the following statements: (1) In every country, people think other individuals in their country are less happy than they actually are. (2) In the United States, women’s happiness has increased both absolutely and relative to men. Which of these statements is True/False?\nA. True, True\nB. True, False\nC. False, True\nD. False, False",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "When coastal States do enforce their criminal jurisdiction over foreign vessels in their ports?\nA. Port States generally do not enforce their criminal jurisdiction over crimes that do not infringe their customs laws or disrupt peace and public order.\nB. Port States enforce their jurisdiction in all cases of delinquent vessels\nC. Port States enforce their jurisdiction only in respect of very serious crimes, such as drug trafficking\nD. Port States are not entitled to enforce their jurisdiction over any foreign vessel",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "Which of the following factors most likely would cause an accountant not to accept an engagement to compile the financial statements of a nonissuer?\nA. A lack of segregation of duties in the entity's accounting and payroll departments.\nB. Indications that reports of asset misappropriation are not investigated by management.\nC. The entity's intention to omit from the financial statements substantially all of the disclosures required by GAAP.\nD. Management's acknowledgement that the financial statements will be included in a written personal financial plan.",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "Which of the following is TRUE of the duration of the refractory period experienced by men?\nA. it is consistent across men and lasts 20 minutes\nB. it varies across men lasting from a few minutes to 24 hours\nC. it tends to be shorter with alcohol consumption\nD. it tends to be longer in younger men",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "In learned helplessness research, it was found that giving solvable problems eliminated the helplessness caused by unsolvable problems. It is argued thar this is due to\nA. a change in attribution with the realization that one can sometimes succeed\nB. the shift in locus of control from internal to external\nC. a practice effect\nD. the application of a partial reinforcement schedule",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": " This is a part of the communication process where the sender selects a combination of appropriate words, pictures, symbols, and music to represent a message to be transmitted:\nA. Encoding.\nB. Decoding.\nC. Transfer.\nD. Feedback.",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "Statement 1 | Every ideal in a ring is a subring of the ring. Statement 2 | Every subring of every ring is an ideal of the ring.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "Which of these household pets should be vaccinated for parvovirus?\nA. hamster\nB. cat\nC. dog\nD. bird",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "The term that best describes an artwork that incorporates theatrical elements such as body movement, audience participation, music, and projected images is\nA. mimesis\nB. installation art\nC. performance art\nD. digital collage",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "Which of the following statements would \"supply-side\" economists disagree with?\nA. Tax changes cause shifts in aggregate supply that work against shifts in aggregate demand thus reducing the effect of the tax change on real GDP.\nB. A tax cut is likely to increase aggregate supply by boosting saving investment and thus capital accumulation.\nC. A tax increase is likely to decrease aggregate supply by decreasing after-tax wages and thus providing disincentives to work.\nD. A tax cut is likely to increase aggregate supply by providing greater rewards for risk taking.",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "To ward off bad luck what do many people do to wood?\nA. knock on it\nB. kiss it\nC. thank it\nD. scratch it",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "By analyzing the levels of 13C in bones, researchers can establish whether an individual ate:\nA. mostly grains or mostly nuts and fruits.\nB. mostly meat or mostly vegetables.\nC. no dairy or lots of dairy.\nD. a certain type of honey produced only in sub-Saharan Africa.",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "Construct a complete truth table for the following argument. Then, using the truth table, determine whether the argument is valid or invalid. If the argument is invalid, choose an option which presents a counterexample. (There may be other counterexamples as well.)\n(O ≡ P) ∨ P / P ∨ ~O\nA. Valid\nB. Invalid. Counterexample when O and P are true\nC. Invalid. Counterexample when O is true and P is false\nD. Invalid. Counterexample when P is true and O is false",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "The standard state for redox reactions includes\nA. the temperature is 25 °C\nB. concentrations of soluble species are 1 molar\nC. partial pressures of gases are 1 atmosphere\nD. all of the above are true",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "If a ring has the number 925 stamped into it it is most likely made of what material?\nA. platinum\nB. gold\nC. steel\nD. silver",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "A defendant and a victim were roommates at college. The defendant was playing the role of a serial killer in the school play and asked the victim if she could leave their apartment for a few hours while she rehearsed. The victim agreed but returned to the apartment shortly thereafter because she was curious and wanted to see the defendant rehearse. The victim quietly came back into the apartment and hid behind some curtains in the dining room in order to watch the defendant rehearse. In her role, the defendant earned a large butcher's knife, with which she stabbed the curtains at her \"victim. \" Unknown to the defendant, the victim, who was hiding behind the curtain, was stabbed in the chest and killed. If the defendant is prosecuted for the victim's death, she should be found\nA. guilty of murder.\nB. guilty of manslaughter.\nC. guilty of battery.\nD. not guilty.",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "Which of the following statements is correct?\nA. Economic Profits = Accounting Profits.\nB. Economic Costs = Explicit Costs plus Implicit Costs.\nC. Economic Costs = Explicit Costs minus Implicit Costs.\nD. Opportunity Costs = Economic Profits.",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "In what country are the most Basque speakers found?\nA. Denmark\nB. Finland\nC. Luxembourg\nD. Spain",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "A man owned a four-story apartment building. The man borrowed $125,000 from his friend to make improvements. As consideration for the loan, the man executed a promissory note for $125,000 payable to the friend in one year and secured by a mortgage on the apartment building. The mortgage was dated January 1, 2008, and was recorded January 2, 2008. Thereafter, on February 1, 2008, the man executed a deed absolute on the apartment building and named the friend as grantee. This deed, although absolute in form, was intended only as additional security for the payment of the debt. In order to make judicial foreclosure unnecessary and to eliminate the right to redeem, the man then delivered the deed to an escrow agent in escrow with instructions to deliver the deed to the friend if the man failed to pay his promissory note at maturity. On January 1, 2009, the man failed to pay the note when it came due. The next day, the escrow agent delivered the deed to the apartment building to the friend. The friend then properly recorded this deed on January 3. One week later, on January 10, the friend conveyed the apartment building by warranty deed to an investor for the purchase price of $200,000. On January 12, the man tendered the $125,000 balance due to the friend, which he refused to accept. The man now brings an appropriate action against the friend and the investor to set aside the conveyance and to permit the redemption of the property by the man. Which of the following best states the man's legal rights, if any, in his action against the friend and the investor?\nA. The man has no rights against the investor, but the man does have an action for redemption against the friend for the value of the property.\nB. The man has no rights against the friend, but the man does have an action for redemption against the investor for the value of the property.\nC. The man has the option of seeking redemption against either the friend or the investor for the value of the property, but the man cannot set aside the conveyance.\nD. The man has no rights against either the friend or the investor because he defaulted on the promissory note.",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "Which of the following statements about meiosis is correct?\nA. The daughter cells are genetically identical to the parent cells.\nB. Homologues pair during prophase II.\nC. DNA replication occurs before meiosis I and meiosis II.\nD. The number of chromosomes is reduced.",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "According to Epicurus, a law is unjust when:\nA. it is not in accordance with natural law.\nB. it is not in accordance with the traditions of society.\nC. it is offensive to the gods.\nD. it is not beneficial to those it affects.",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "What is the name of the Swedish company that specializes in affordable furniture?\nA. Gambro\nB. Electrolux\nC. Saab\nD. IKEA",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "Using fundamental trends in electronegativity and bond strength, which of the following should be the strongest acid?\nA. H2S\nB. HI\nC. HBr\nD. H2O",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "After sending a decal to display on a window and greeting cards with its logo, a charity sent the same people envelopes requesting contributions. Many people send contributions. The charity is using a technique known as\nA. overcompensation\nB. foot-in-the-door phenomenon\nC. the bystander effect\nD. proximity",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "Whom did Billie Jean King defeat in the famous 'Battle of the Sexes' tennis match?\nA. Jimmy Connors\nB. Pete Sampras\nC. John McEnroe\nD. Bobby Riggs",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "Archaeological evidence for the production of cheese and yogurt in Europe suggests that dairying became an important part of subsistence by ______ years ago, with _______ providing an adaptive advantage.\nA. 10,000; artificial selection for certain varieties of cheese\nB. 7,500; the lactase persistence mutation\nC. 5,500; domesticated cattle\nD. 3,500; certain strains of lactose-free cheese and yogurt",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "This question refers to the following information.\nI walk alongside the column, ask what's going on.\nA soldier says simply: \"They call up more every day.\n\"Some of us were sent north to the Yellow River at age fifteen,\nAnd now at forty we're heading off to the garrisons in the west.\nOn our first tour, the village headman had to tie our bandannas for us.\nWhen we came back, our hair was white, but still there's more unrest.\nThe frontier garrisons run with blood, enough to fill an ocean,\nBut the Martial Emperor's territorial ambitions have yet to crest.\nIn the hundred districts east of the mountains, throughout the land of Han,\nThere must be ten thousand villages that brambles now infest.\nEven if wives are strong enough to handle a hoe and plow,\nThe crops grow every which way, the fields are all a mess.\nIt's hardest for the Shanxi men, with their reputations as fighters:\nThey're rounded up like dogs or chickens, every male impressed.\n\"But sir, though it's good of you to ask,\nComplaining isn't part of the soldier's task.\nWe can only shake our heads. Take this winter:\nThe Shanxi troops were never sent home.\nThe District Officers are demanding the land tax,\nBut where will it come from? You can't get blood from a stone!\nI honestly think it's bad luck to bear a son now,\nIt's better to have a daughter: at least she can marry\nAnd live with the neighbors next door.\nBut a son will end up lying on some distant prairie.\"\nDu Fu, \"Ballad of the Army Carts,\" ca. 750 C.E.\nThe succeeding Song dynasty differed from the Tang in that\nA. the Song abolished the Confucian civil service exams\nB. the Song sponsored Buddhism to the detriment of Taoism and Confucianism\nC. the Song pursued a less expansive foreign policy\nD. the Song dynasty was originally from outside of China",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "Two volleyball teams that played in adjoining areas were competing in the National Volleyball Tournament Championship in a distant city. Both teams were staying at the same hotel. The assistant coach of one of the teams learned that the team captain of the other team was staying in the next room. In order to obtain information about the other team's strategy for the championship game, the assistant coach used electronic devices placed against the wall to listen to and record conversations between the team captain and his teammates. The assistant coach later bragged to others about having eavesdropped on the team captain, and the team captain eventually heard about what the assistant coach had done. If the team captain asserts a claim against the assistant coach for invasion of privacy, will the team captain prevail?\nA. Yes, because the assistant coach was recording the conversation for the use and advantage of his team.\nB. Yes, because the team captain had a reasonable expectation of privacy in his hotel room.\nC. No, because the assistant coach's electronic devices did not physically intrude into the team captain's room.\nD. No, because there was publication of the recorded conversations.",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "A school psychologist is asked to help Ms. Smith address problem behaviors that are disrupting the learning of her students. The school psychologist is given data that indicate discipline referrals have been written on 26 of the 30 students in Ms. Smith's class. Which of the following is best for the school psychologist to recommend?\nA. Developing individual behavior contracts for the 26 students who have received discipline referrals\nB. Using comprehensive emotional and behavioral assessments for students who have received discipline referrals\nC. Providing school-based group counseling to address issues such as study skills, attendance, decision making, problem solving, and goal setting.\nD. Implementing a class-wide behavior management plan, such as a responsecost raffle.",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "A manufacturer of snowmobiles produced one model, Model IA, which was a very popular snowmobile. On each of the Model 1 A snowmobiles produced, the manufacturer installed a speed-regulating device that prevented the snowmobiles from exceeding 50 m. p. h. The manufacturer distributed the snowmobile through wholesalers and retailers across the country. In its sales brochures and advertising materials, the manufacturer advises all of its distributors against making any modifications on snowmobiles without first conferring with the manufacturer's staff of engineers. The operator of a shop in a mountain community had the exclusive right to distribute Model 1A snowmobiles in the area. Amid complaints from previous buyers regarding Model lA's speed limitations, the operator removed the speed regulators from all the Model 1A snowmobiles in stock. A buyer purchased from the operator one of the Model 1A snowmobiles that had the speed regulator removed. One day, the buyer was driving the Model 1A snowmobile through a snow-covered field, at speeds in excess of 70 m. p. h. The snowmobile hit a snow-covered rock, causing the buyer to lose control of the snowmobile, crash into a tree, and suffer serious injuries. If the buyer institutes a strict liability in tort action, he will most likely recover against\nA. the manufacturer only.\nB. the manufacturer, even though it was unaware of the removal of the speed regulator.\nC. the operator only.\nD. both the manufacturer and the operator.",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "How much has the number of practitioners working in consultancies in the UK grown since 25 years ago?\nA. It hasn't\nB. Doubled\nC. Tripled\nD. Quadrupled",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "Which of the following is an example of a detritivore?\nA. Cactus\nB. Algae\nC. Bat\nD. Fungus",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | I took off my pants at the playground and waved at the kids. Scenario 2 | I tossed my car keys toward my daughter since she asked to go for a drive.\nA. Wrong, Wrong\nB. Wrong, Not wrong\nC. Not wrong, Wrong\nD. Not wrong, Not wrong",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "Mill CPA was engaged by a group of royalty recipients to apply agreed-upon procedures to financial data supplied by Modern Co. regarding Modern's written assertion about its compliance with contractual requirements to pay royalties. Mill's report on these agreed-upon procedures should contain a(an)\nA. Disclaimer of opinion about the fair presentation of Modern's financial statements.\nB. List of the procedures performed (or reference thereto) and Mill's findings.\nC. Opinion about the effectiveness of Modern's internal control activities concerning royalty payments.\nD. Acknowledgment that the sufficiency of the procedures is solely Mill's responsibility.",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "Sustainability can broadly be defined as\nA. The short-term maintenance of systems according to environmental, economic and social considerations\nB. The long-term maintenance of processes according to environmental, economic and cultural considerations.\nC. The short-term maintenance of systems according to environmental, political and social considerations.\nD. The long-term maintenance of systems according to environmental, economic and social considerations.",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "Which of the following is correct concerning logit and probit models?\nA. They use a different method of transforming the model so that the probabilities lie between zero and one\nB. The logit model can result in too many observations falling at exactly zero or exactly one\nC. For the logit model, the marginal effect of a change in one of the explanatory variables is simply the estimate of the parameter attached to that variable, whereas this is not the case for the probit model\nD. The probit model is based on a cumulative logistic function",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "An accounts payable entry appears in the\nA. asset section of the balance sheet\nB. liability section of the balance sheet\nC. cost of goods sold section of the income statement\nD. operating expense section of the income statement",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "Self-verification theory predicts that a husband who has low self-esteem and is overweight and chronically depressed will prefer his wife to:\nA. not comment on his abilities, weight, and mood.\nB. make neutral comments about his abilities, weight, and mood.\nC. conﬁrm his negative self-evaluations.\nD. contradict his negative self-evaluations.",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "Which form of encryption does WPA use?\nA. Shared key\nB. LEAP\nC. TKIP\nD. AES",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "S(s) + O2(g) → SO2(g)\nA. either S(s) or O2(g) will be completely used up\nB. Q must be close to 1.0 since there is one mole of gas on each side of the equation\nC. this reaction goes to completion\nD. adding O2 will change the equilibrium constant",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "An earlier boundary formed before meticulous geographic knowledge and mapping was available is known as\nA. an antecedent boundary.\nB. a geometric boundary.\nC. a relict boundary.\nD. a subsequent boundary.",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "A man went shopping to buy a used car. He found one on a used car lot that was offered \"as is.\" He looked at it thoroughly. The tag on the window indicated a special 30-point inspection was done on the car. The 30 points included the drive train, the engine, spark plugs, oil, transmission, and numerous other major items. The man put a $1,000 down payment on the car. He took the car to an independent mechanic who told him that the car had been in an accident and had sustained severe damage, including a cracked engine block. The mechanic offered that the dealer must have known of that kind of massive damage. The man tried to return the car and get his down payment back, but the dealer refused, claiming the car was sold \"as is,\" and all express or implied warranties under the Uniform Commercial Code were disclaimed in the purchase contract. Stuck with a lemon, the man sued the company under a common law fraud theory. The company counterclaimed for the balance of the purchase price. Will the man likely prevail in the litigation against the car dealer?\nA. Yes, because the dealer withheld material information intentionally and knowingly misrepresented the condition of the car.\nB. Yes, because the dealer has a duty to give every reason why an \"as is\" car may go bad and to list those reasons on the window.\nC. No, because the dealer cannot be held responsible for possible damage that the used car may have developed after years of use.\nD. No, because the dealer is absolutely protected when he sells a used car in \"as is\" condition, and where the warranties under the Uniform Commercial Code are duly waived.",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "Certain populations of finches have long been isolated on the Galapagos Islands off the western coast of South America. Compared with the larger stock population of mainland finches, these separate populations exhibit far greater variation over a wider range of species. The variation among these numerous finch species is the result of\nA. convergent evolution\nB. divergent evolution\nC. disruptive selection\nD. stabilizing selection",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "At what speed will a sedan flip over when it slides sideways into a curb?\nA. 10 mph\nB. 20 mph\nC. 40 mph\nD. 80 mpg",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | I hid my diabetic children's insulin from them until Christmas morning. Scenario 2 | A debater that I like wanted to win, so I assigned her judges that were randomly chosen.\nA. Wrong, Wrong\nB. Wrong, Not wrong\nC. Not wrong, Wrong\nD. Not wrong, Not wrong",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "Which branch of Judaism founded by Zacharias Frankel is known for its \"Positive-Historical Judaism\"?\nA. Conservative\nB. Reformed\nC. Reconstructionism\nD. Orthodox",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "What is the sum of all integer solutions to $|n| < |n-3| < 9$?\nA. -9\nB. -14\nC. 14\nD. 9",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "The average speed of a gazelle traveling a distance of 2 km in a time of one-half hour is\nA. 1 km/h\nB. 2 km/h\nC. 4 km/h\nD. greater than 4 km/h",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "If the human norovirus cannot be cultured in cell cultures how can it best be studied?\nA. Animal models\nB. Volunteer studies\nC. In cells using replicon systems\nD. Deductions from the 3 human ORF's of the virus genome",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | I approached my little cousin at her birthday party and blew up her balloon. Scenario 2 | I didn't go to school because I had a cold.\nA. Wrong, Wrong\nB. Wrong, Not wrong\nC. Not wrong, Wrong\nD. Not wrong, Not wrong",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": " Foot's Rescue I and Rescue II cases are intended to\nA. contrast evil intentions with good intentions.\nB. contrast originating a harmful sequence with allowing a harmful sequence to continue.\nC. show that evil intentions always involve the origination of harmful sequences.\nD. all of the above",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "Anscombe claims that on Sidgwick’s view, the badness of an action must be estimated in light of:\nA. its actual consequences.\nB. its expected consequences.\nC. whether it violates any duties.\nD. whether it violates divine law.",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "If the total energy of a particle of mass m is equal to twice its rest energy, then the magnitude of the particle’s relativistic momentum is\nA. mc/2\nB. mc/(2^(1/2))\nC. mc\nD. (3^(1/2))mc",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "A 12-year-old boy decided to play a practical joke. Knowing that his parents were giving a dinner party that evening, the boy filled a bucket with ice-cold water and balanced it on the partially open door of the guest bedroom, thinking that his father would take the guests' coats there to put them on the bed. The boy then went off to play at a friend's house. The boy's father decided to keep all the guests' coats in the hall closet instead of putting them in the guest bedroom. Later that evening, one of the guests mistakenly wandered into the guest bedroom while searching for a bathroom. As the guest opened the door, the bucket fell and hit his head, causing a severe cut that required a dozen stitches. If the guest sues the boy for negligence, the most likely result is\nA. the boy wins, because a child's conduct cannot be negligent.\nB. the boy wins, because the guest unreasonably assumed the risk of entering an unfamiliar room rather than asking for directions to the bathroom.\nC. the boy loses, because this \"practical joke\" posed a risk of severe harm and, therefore, the boy had a duty to exercise as much care as a reasonable adult.\nD. the boy loses, because he did not act with the amount of care that one would expect from a 12-year-old child.",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "Delia was accepted to both Harvard University and Yale University and is having difficulty choosing which school to attend. With which of the following conflicts is she faced?\nA. frustration-aggression\nB. intrinsic-extrinsic\nC. approach-avoidance\nD. approach-approach",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "This question refers to the following information.\nQuestions to the passage below, an account given to a French officer in Algeria in the 1830s by a member of an Arab slave trade caravan.\nThe Slave Trade\nAll of you [soldiers], are summoned . . . to hunt the idolatrous Koholanes [a pejorative word for \"black Africans\"]. . . . The soldiery divided themselves into two companies . . . with orders to attack places without defenses and to carry off the inhabitants as well as seizing all peasants busy cultivating their fields. . . . Whilst waiting for the return of the companies despatched to hunt Negroes, we went every day to the slave market where we bought at the following prices:\nA Negro with beard………………10 or 15,000 cowries.\nThey are not considered as merchandise since one has little chance of preventing them from escaping.\nAn adult Negress………………..10 or 15,000 cowries for the same reasons\nAn adolescent Negro………………….30,000 cowries\nA young Negress ……………………50–60,000 cowries\nThe price varies according to whether she is more or less beautiful.\nA male Negro child……………………..45,000 cowries\nA female Negro child ……………………….35–40,000 cowries\nFinally, our caravan which had set out from Algeria with sixty-four camels and only sixteen persons, was now augmented by four hundred slaves, of whom three hundred were women. . . . It was at this point that suddenly a confused noise of cries and sobs passed from one group of slaves to another and reached our own. . . . Some rolled on the ground, clung to bushes and absolutely refused to walk. . . . They could only be got up with mighty lashes of the whip and by rendering them completely bloody.\nWhich conclusion is supported by the passage?\nA. Africans passively accepted their capture and subsequent enslavement.\nB. North Africans were primarily captured and enslaved by rival African tribes.\nC. Population changes from slavery resulted in North African tribes having more men than women.\nD. Adult male slaves were most highly valued due to their physical strength.",
+        "Ground_truth": "C"
+    },
+    {
+        "Question": "Which of the following is the best example of constant error\nA. A subject consistently provides wrong answers to every test item\nB. A psychometrician consistently underestimates IQ scores by 10 points\nC. A test item is answered incorrectly by every student in a given class\nD. A test-retest reliability coefficient is low for several samples",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "For which integers n such that 3 <= n <= 11 is there only one group of order n (up to isomorphism)?\nA. For no such integer n\nB. For 3, 5, 7, and 11 only\nC. For 3, 5, 7, 9, and 11 only\nD. For 4, 6, 8, and 10 only",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "After learning that a new housing development was about to be built, a developer began looking for property near the housing development on which he could build a shopping center. After an extensive search, he purchased a three-acre undeveloped tract of land for the purpose of developing a small shopping center. At the time the sale was finalized, the developer told his plans to the seller of the three-acre tract, and also mentioned that he was worried whether he had sufficient funds to complete the project. The seller agreed to lend money to the developer to allow for completion of the project. The seller then wrote out the following contract:\"In order to help the developer with his plans for development of a shopping center on the three- acre tract he has this day purchased from me, I will lend him $50,000 at 10 percent interest provided he signs a contract with a builder for construction of the shopping center on this tract. Repayment to me at the rate of $5,000 per year to be secured by a mortgage on the three-acre tract. \"Both parties then signed the contract. The seller's promise to lend $50,000 to the developer is\nA. a condition precedent in form but subsequent in substance to the developer's duty to enter into a building construction contract.\nB. a condition subsequent in form but precedent in substance to the developer's duty to enter into a building construction contract.\nC. a condition subsequent to the developer's duty to enter into a building construction contract.\nD. not a condition, either precedent or subsequent, to the developer's duty to enter into a building construction contract.",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "A teacher believes that giving her students a practice quiz every week will motivate them to study harder, leading to a greater overall understanding of the course material. She tries this technique for a year, and everyone in the class achieves a grade of at least C. Is this an experiment or an observational study?\nA. An experiment, but with no reasonable conclusion possible about cause and effect\nB. An experiment, thus making cause and effect a reasonable conclusion\nC. An observational study, because there was no use of a control group\nD. An observational study, but a poorly designed one because randomization was not used",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "Let R be a ring with a multiplicative identity. If U is an additive subgroup of R such that ur in U for all u in U and for all r in R, then U is said to be a right ideal of R. If R has exactly two right ideals, which of the following must be true?\nI. R is commutative.\nII. R is a division ring (that is, all elements except the additive identity have multiplicative inverses).\nIII. R is infinite.\nA. I only\nB. II only\nC. III only\nD. I and II only",
+        "Ground_truth": "B"
+    },
+    {
+        "Question": "What part of the world was once known as Cathay?\nA. China\nB. India\nC. Iran\nD. Indonesia",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "If a catheter resists all attempts to unblock it and you are unable to remove it, what should you do?\nA. Try harder to remove it.\nB. Try harder to unblock it.\nC. Leave it until next time.\nD. Call for assistance from a medical practitioner.",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "If real GDP per capita grows at a rate of 10 percent a year then we can expect the standard of living to double in\nA. 10 years.\nB. 9 years.\nC. 8 years.\nD. 7 years.",
+        "Ground_truth": "D"
+    },
+    {
+        "Question": "The best known and perhaps most important international organization is\nA. the United Nations.\nB. the North Atlantic Treaty Organization (NATO).\nC. the Organization of Petroleum Exporting Countries (OPEC).\nD. the World Trade Organization (WTO).",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | I poured a cup of hot coffee on my baby. Scenario 2 | I volunteered my 99-year-old granny to enter the abandoned mine to rescue the lost children.\nA. Wrong, Wrong\nB. Wrong, Not wrong\nC. Not wrong, Wrong\nD. Not wrong, Not wrong",
+        "Ground_truth": "A"
+    },
+    {
+        "Question": "A longitudinal study would be useful in assessing which of the following?\nA. Age differences\nB. Gender differences\nC. Cultural environments\nD. Changes in behavior over time",
+        "Ground_truth": "D"
+    }
+]

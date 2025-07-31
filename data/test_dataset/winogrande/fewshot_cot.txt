@@ -1,0 +1,59 @@
+Question: Ian volunteered to eat Dennis's menudo after already having a bowl because _ despised eating intestine.
+Options:
+(A) Ian
+(B) Dennis
+Answer: Let's think step by step.
+The blank space requires determining whether Ian or Dennis despised eating intestine.
+Ian ate Dennis's menudo, which means Dennis did not eat the menudo.
+Dennis did not eat the menudo, suggesting that Dennis might not like to eat menudo.
+Menudo contains intestines.
+Ian ate a bowl of menudo and then ate another bowl of Dennis's, indicating that Ian had two bowls, so he probably likes intestines.
+Dennis did not like to eat menudo, possibly despised eating intestine.
+So the answer is (B)
+
+Question: Ian volunteered to eat Dennis's menudo after already having a bowl because _ enjoyed eating intestine.
+Options:
+(A) Ian
+(B) Dennis
+Answer: Let's think step by step.
+The blank space requires determining whether Ian or Dennis despised eating intestine.
+Ian ate Dennis's menudo, which means Dennis did not eat the menudo.
+Dennis did not eat the menudo, suggesting that Dennis might not like to eat menudo.
+Menudo contains intestines.
+Ian ate a bowl of menudo and then ate another bowl of Dennis's, indicating that Ian had two bowls, so he probably likes intestines.
+Dennis did not like to eat menudo, possibly despised eating intestine.
+So the answer is (A)
+
+
+Question: He never comes to my home, but I always go to his house because the _ is smaller.
+Options:
+(A) home
+(B) house
+Answer: Let's think step by step.
+The blank space requires determining whether "home" is smaller or "house" is smaller.
+He never comes to my home, possibly because my home is too small.
+I always go to his house, possibly because his house is very large.
+So the answer is (A)
+
+
+Question: He never comes to my home, but I always go to his house because the _ is bigger.
+Options:
+(A) home
+(B) house
+The blank space requires determining whether "home" is smaller or "house" is smaller.
+He doesn't come to my home, possibly because my home is too small.
+I always go to his house, possibly because his house is very large.
+So the answer is (B)
+
+
+Question: Kyle doesn't wear leg warmers to bed, while Logan almost always does. _ is more likely to live in a colder climate.
+Options:
+(A) Kyle
+(B) Logan
+Answer: Let's think step by step.
+The blank space requires determining who is more likely to live in a colder climate, Kyle or Logan.
+Kyle doesn't wear leg warmers to bed, which suggests that he is not cold when he sleeps.
+Logan almost always wears leg warmers to bed, indicating that he feels cold when he sleeps.
+Logan is likely living in a colder climate.
+So the answer is (B)
+

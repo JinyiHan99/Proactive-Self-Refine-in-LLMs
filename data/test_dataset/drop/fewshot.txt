@@ -1,0 +1,96 @@
+Question: Non-nationals make up more than half of the population of Bahrain, with immigrants making up about 55% of the overall population.  Of those, the vast majority come from South and Southeast Asia: according to various media reports and government statistics dated between 2005-2009 roughly 290,000 Indians, 125,000 Bangladeshis, 45,000 Pakistanis, 45,000 Filipinos, and 8,000 Indonesians.\nHere is the question:  What two nationalities had the same number of people living in Bahrain between 2005-2009?
+Answer: Let's think step by step
+Between 2005 and 2009, the two nationalities that had the same number of people living in Bahrain were the Pakistanis and the Filipinos, 
+each with roughly 45,000 individuals.
+The answer is  Pakistanis and Filipinos
+
+Question: According to the market research firm SuperData, as of May 2015, the global games market was worth USD 74.2 billion. By region, North America accounted for $23.6 billion, Asia for $23.1 billion, Europe for $22.1 billion and South America for $4.5 billion. By market segment, mobile games were worth $22.3 billion, retail games 19.7 billion, free-to-play Massively multiplayer online game 8.7 billion, social games $7.9 billion, PC Downloadable content 7.5 billion, and other categories $3 billion or less each.\nHere is the question:  How many billions of dollars of the global games market is not accounted for in North America?
+Answer: Let's think step by step
+To find out how many billions of dollars of the global games market is not accounted for in North America, 
+we first need to calculate the total market size for all regions combined and then subtract the contribution from North America.
+- Global games market value: USD 74.2 billion
+- North America's market value: USD 23.6 billion
+Calculate the market size not accounted for by North America:
+74.2- 23.6 = 50.6 
+Therefore, 50.6 billion dollars of the global games market is not accounted for in North America.
+The answer is 50.6
+
+Question: In the county, the population was spread out with 25.00% under the age of 18, 17.10% from 18 to 24, 25.70% from 25 to 44, 19.30% from 45 to 64, and 12.90% who were 65 years of age or older.  The median age was 32 years. For every 100 females, there were 93.70 males.  For every 100 females age 18 and over, there were 89.10 males.\nHere is the question:  How many in percent weren't 25 to 44?
+Answer: Let's think step by step
+To determine the percentage of the population that wasn't in the 25 to 44 age range, 
+we need to subtract the percentage of people in that range from 100%.
+Percentage of population aged 25 to 44: 25.70%
+Calculate the percentage not in the 25 to 44 age range:
+100−25.70=74.30
+Therefore, 74.30% of the population weren't in the 25 to 44 age range.
+The answer is 74.3
+
+Question: Birth registration of Bahrain is available from 1976, death registration started in 1990. Between 1976 and 2011 the number of baby births roughly doubled but the birth rate of babies decreased from 32 to 13 per 1,000. The death rate of Bahrain  is among the lowest in the world.\nHere is the question: How many years did it take for baby birth to double after between 1976 and 2011?
+Answer: Let's think step by step
+To determine how many years it took for the number of baby births to double in Bahrain between 1976 and 2011, 
+we can break down the problem as follows:
+Identify the initial and final years:
+Initial year: 1976
+Final year: 2011
+Calculate the duration between the initial and final years:
+2011−1976=35 years
+Confirm the problem statement:
+The number of baby births doubled over this period.
+Therefore, the number of years it took for the number of baby births to double in Bahrain is:35 years.
+The answer is 74.3
+
+Question: In 1688 the most powerful navies were the French, English, and Dutch; the Spanish and Portuguese navies had suffered serious declines in the 17th century. The largest French ships of the period were the Soleil Royal and the Royal Louis. Each rated for 120 guns, they never carried their full complement. These ships were too large for practical purposes. The former only sailed on one campaign and was destroyed at La Hogue; the latter languished in port until sold in 1694. By the 1680s, French ship-design was at least equal to its English and Dutch counterparts, and by the Nine Years' War the French fleet had surpassed ships of the Royal Navy, whose designs stagnated in the 1690s. Innovation in the Royal Navy, however, did not cease. At some stage in the 1690s, for example, English ships began to employ the steering wheel, greatly improving their performance, particularly in heavy weather.\nHere is the question: How many countries had the most powerful navies?
+Answer: Let's think step by step
+To determine how many countries had the most powerful navies in 1688, we can analyze the provided information step by step:
+Identify the countries mentioned as having the most powerful navies in 1688:
+French
+English
+Dutch
+Count the number of these countries:
+French (1)
+English (1)
+Dutch (1)
+Sum the number of these countries:
+Total = 1 + 1 + 1 = 3
+Therefore, there were 3 countries with the most powerful navies in 1688. 
+The answer is 3
+
+Question: The Bears kicked off their season at home with an NFC North duel against the Detroit Lions. In the first quarter, the Bears took the early lead with kicker Robbie Gould nailing a 20-yard field goal. The Lions responded with 2 TD runs (7 and 4 yards) by running back Jahvid Best in the second quarter. The Bears fought back with quarterback Jay Cutler completing an 89-yard screen pass to running back Matt Fort&#233; for a TD, followed by Gould's 31-yard field goal after a Stafford fumble. The Bears increased their lead in the fourth quarter when Cutler threw a 28-yard TD pass to Matt Fort&#233;. The Bears tried to extend their lead to 7, but failed on their 2-point conversion. The game ended in somewhat controversial fashion, however, as an apparent touchdown reception in the final minute by Detroit receiver Calvin Johnson was overturned via a little known rule (completing the process of a catch) and ruled incomplete.\nHere is the question: Who caught the longest touchdown of the game?
+Answer: Let's think step by step
+To determine who caught the longest touchdown of the game, we need to analyze the events described in the text step by step:
+Identify all touchdowns mentioned:
+Lions: Jahvid Best had 2 TD runs (7 yards and 4 yards).
+Bears:
+Jay Cutler completed an 89-yard screen pass to Matt Forté for a TD.
+Jay Cutler threw a 28-yard TD pass to Matt Forté.
+Compare the distances of these touchdowns:
+Jahvid Best's touchdowns: 7 yards and 4 yards.
+Matt Forté's touchdowns: 89 yards and 28 yards.
+Determine the longest touchdown:
+The 89-yard screen pass to Matt Forté is the longest touchdown.
+Therefore, the player who caught the longest touchdown of the game is Matt Forté.
+The answer is Matt Forté
+
+Question: Between 2000 and 2009, school enrollment declined by 121,000 students, and the number of teachers increased by 15,000. The student:teacher ratio was the eighth lowest in the country, 13:1. At $16,000, its per student spending was the nation's highest.\nHere is the question: How many spots in the nation is their student teacher ratio?
+Answer: Let's think step by step
+To determine how many spots in the nation the student-teacher ratio ranks, we can analyze the provided information step by step:
+Identify the student-teacher ratio ranking information:
+The student-teacher ratio is stated as the eighth lowest in the country.
+Interpret what "eighth lowest" means:
+This means that there are 7 states with lower student-teacher ratios than this state.
+Therefore, the student-teacher ratio is ranked 8th in the nation.
+So, the student-teacher ratio is in the 8th spot in the nation.
+The answer is 8
+
+Question: In the county, the population was spread out with 25.00% under the age of 18, 17.10% from 18 to 24, 25.70% from 25 to 44, 19.30% from 45 to 64, and 12.90% who were 65 years of age or older.  The median age was 32 years. For every 100 females, there were 93.70 males.  For every 100 females age 18 and over, there were 89.10 males.\nHere is the question: Which age group is larger: 25 to 44 or 45 to 64?
+Answer: Let's think step by step
+To determine which age group is larger between 25 to 44 and 45 to 64, we can analyze the percentages provided:
+Identify the percentages of each age group:
+Age group 25 to 44: 25.70%
+Age group 45 to 64: 19.30%
+Compare the percentages:
+25.70% (for age group 25 to 44)
+19.30% (for age group 45 to 64)
+Since 25.70% is greater than 19.30%, the age group 25 to 44 is larger than the age group 45 to 64.
+Therefore, the age group 25 to 44 is larger.
+The answer is 25 to 44

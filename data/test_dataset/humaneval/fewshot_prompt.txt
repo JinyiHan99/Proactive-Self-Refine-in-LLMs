@@ -1,0 +1,17 @@
+Question: 
+Please complete the python function and output the entire function within a python code block, without any explainations.
+```python
+from typing import List
+
+def get_sum(a: List[int]) -> int:
+    """calculate the sum of an integer array."""
+```
+
+Answer:
+```python
+def get_sum(a: List[int]):
+    sum = 0
+        for x in a:
+            sum += x
+    return sum
+```
