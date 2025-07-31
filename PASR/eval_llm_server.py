@@ -17,7 +17,7 @@ from flask import Flask, request, Response
 class Qwen_vllm(object):
     """docstring for Qwen"""
     def __init__(self, model='qwen2.5_32b'):
-        print('当前模型:', model)
+      
         if 'qwen2.5_32b' in model:
             model_name = "/data2/Qwen/Qwen2.5-32B-Instruct"
         
@@ -30,7 +30,7 @@ class Qwen_vllm(object):
         elif 'llama3.1_8b' in model:
             model_name = "/data2/models/Meta-Llama-3.1-8B-Instruct"
         else:
-            print('未考虑到的模型', model)
+            
             exit()
         print('model_name:', model_name)
         self.tokenizer = AutoTokenizer.from_pretrained(model_name) 
@@ -94,7 +94,7 @@ class Qwen_vllm(object):
         return all_res
 
 llm = Qwen_vllm('qwen2.5_32b')
-app = Flask(__name__)  # 初始化app
+app = Flask(__name__)  
 @app.route('/generate', methods=["POST"])
 def handle():
     data = json.loads(request.get_data())
