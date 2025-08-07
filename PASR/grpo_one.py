@@ -237,12 +237,7 @@ def gen_worker(Q, physics_device):
                 cur_format_scores.append(format_score)
                 eval_refine_contents.append({"q":inp['Q'],'std':inp['A'],"answer":cur_refine_answers[j],"sys_prompt":sys_prompt})
                 eval_prev_contents.append({"q":inp['Q'],'std':inp['A'],"answer":cur_prev_answers[j], "sys_prompt": sys_prompt})
-            #计算refine答案以及prev acc的得分
-            # print(f"!!!type:{eval_refine_contents} {eval_refine_contents[0]}")
-            # print(f"!!!type:{eval_prev_contents} {eval_prev_contents[1]}")
 
-            # cur_acc_scores= requests.post(url=f"{eval_query_server}/generate", json = eval_refine_contents).json()
-            # cur_prev_acc_scores = requests.post(url=f"{eval_query_server}/generate", json = eval_prev_contents).json()
 
             cur_acc_scores = [llm_eval(x['answer'], x) for x in eval_refine_contents]
             cur_prev_acc_scores = [llm_eval(x['answer'], x) for x in eval_prev_contents]
