@@ -68,7 +68,6 @@ def GRPO_step(batch):
     print(f"!!! rank: {torch.distributed.get_rank()} inputs shape: {inputs.shape} ")
     advantages = batch['rewards'].to(engine.device).unsqueeze(1)
     logits = engine(inputs).logits
-    # print(f"!!! rank: {torch.distributed.get_rank()} cal the logits successfully!!")
 
     logits = logits[:, :-1, :]  # (B, L-1, V), exclude the last logit: it corresponds to the next token pred
     input_ids = inputs[:, 1:]  # (B, L-1), exclude the first input ID since we don't have logits for it 
@@ -103,46 +102,19 @@ def gen_worker(Q, physics_device):
     vllm_gen = LLM(model=model_path, gpu_memory_utilization=0.5)
     ref_server_ver = 'tensor'  # don't worry, it will auto switch based on the first upload
 
-    #sampling_params = SamplingParams(n=num_pre_Q, temperature=0.9, max_tokens=600)
     gen_logps_sp = SamplingParams(temperature=0, top_p=1, max_tokens=1, prompt_logprobs=1)
 
-    # data_path = "/mnt/remote-data/hjy/public_code/GRPO/data/gsm8k_train.json"
     data_path = train_config['data_path']
     with open(data_path, 'r', encoding='utf-8') as file:
         dataset = json.load(file)
-    # QAs = [{'Q': item['question'], 'A': item['answer_detail']} for item in dataset] 
     QAs = [{'Q': item['instruction'], 'A': item['output']} for item in dataset] 
     with open("./system_prompt_refine.txt", "r", encoding="utf-8") as f:
         system_prompt_refine = f.read()
     with open("./system_prompt_prev.txt", "r", encoding="utf-8") as f:
         system_prompt_prev = f.read()   
-    # stop_sentences = "<refine>"
-    # process_refine_sentences = "Well, let me try to refine the previous generation answer!\n"
-    # sampling_params_stop = SamplingParams(n=1, temperature=0.9, max_tokens=800, stop=stop_sentences, include_stop_str_in_output=True)
+
     sampling_params_stop = SamplingParams(n= num_pre_Q, temperature=0.9, max_tokens=1500)
-    # fout_code = open(f'{program_path}', 'w')
     
-    # def get_completions(prompts, num):
-    #     outputs = vllm_gen.generate(prompts, sampling_params_stop, use_tqdm=False)
-    #     responses = [output.outputs[0].text for output in outputs]
-    #     if num > 5:
-    #         return responses
-    #     recursive_ids = []
-    #     for i, c in enumerate(responses):
-    #         insert_flag = np.random.choice([0, 1])
-    #         if c.endswith(tuple(stop_sentences)) and insert_flag==1:
-    #             recursive_ids.append(i)
-    #             #    pdb.set_trace()
-    #             fout_code.write(f"\n===============before function:{c}")
-    #     if len(recursive_ids)>0:
-    #         recursive_prompts = []
-    #         for i in recursive_ids:
-    #             responses[i] = responses[i] + process_refine_sentences
-    #             recursive_prompts.append(prompts[i] + responses[i])
-    #         rec_resps = get_completions(recursive_prompts, num+1)
-    #         for org_id, rec_resp in zip(recursive_ids, rec_resps):
-    #             responses[org_id] += rec_resp
-    #     return responses
     
     def gen_answers(prompts, system_prompt):
         tip_text = []
