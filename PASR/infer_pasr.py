@@ -175,9 +175,9 @@ def main(args):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model_name", nargs='+', default=["/data2/models/THUDM/GLM-4-9B-0414"],
+    parser.add_argument("--model_name", nargs='+', default=[""],
                         help="The name of the model")
-    parser.add_argument("--output_path", type=str, default="/data2/WangXinyi/refine/baseline/self-refine/res/GLM-4-9B-0414/base",
+    parser.add_argument("--output_path", type=str, default="",
                         help="The path of the output")
     parser.add_argument("--data_names", nargs='+', default=['math', 'gsm8k', 'aime24', 'mmlu', 'drop', 'xsum', 'arc-challenge', 'gpqa', 'wino', 'commonsenseqa'],
                         help="you can set multi data")
