@@ -8,16 +8,19 @@ import torch.multiprocessing as mp
 from tqdm import tqdm
 import wandb,traceback
 import pdb
-from config import train_config, ds_config
+from config import train_config, ds_config, prompt_config, eval_config
 from ref_server import tensor_to_bytes, bytes_to_tensor, make_bytes_list, bytes_list_to_list
 from transformers import GenerationConfig
 from openai import OpenAI, APITimeoutError
 os.environ['TOKENIZERS_PARALLELISM'] = 'true'
 os.environ["NCCL_P2P_DISABLE"]="1"
+import os
+os.environ['TORCH_COMPILE_DISABLE'] = '1'
+os.environ["VLLM_USE_V1"] = "0"
 
-wandb_name = train_config['wandb_name']
-wandb_project = train_config['wandb_project']
-wandb_key = train_config['wandb_key']
+# wandb_name = train_config['wandb_name']
+# wandb_project = train_config['wandb_project']
+# wandb_key = train_config['wandb_key']
 model_path = train_config['model_path']
 save_path = train_config['save_path']
 record_path = train_config['record_path']
@@ -36,6 +39,8 @@ beta = train_config['beta']
 program_path = train_config['gen_data_path']
 global update_model_num
 update_model_num = 0
+eval_query_server = f"http://localhost:{eval_config['eval_llm_port']}"
+sys_prompt = train_config['eval_prompt']
 
 def get_batch():
     try:
@@ -51,6 +56,7 @@ def get_batch():
     data['acc_scores'] = bytes_to_tensor(dd[5])
     data['format_scores'] = bytes_to_tensor(dd[6])
 
+    # print("!!!batch的key", data.keys())
     return data
 
 def get_per_token_logps(logits, input_ids):
@@ -68,6 +74,7 @@ def GRPO_step(batch):
     print(f"!!! rank: {torch.distributed.get_rank()} inputs shape: {inputs.shape} ")
     advantages = batch['rewards'].to(engine.device).unsqueeze(1)
     logits = engine(inputs).logits
+    # print(f"!!! rank: {torch.distributed.get_rank()} cal the logits successfully!!")
 
     logits = logits[:, :-1, :]  # (B, L-1, V), exclude the last logit: it corresponds to the next token pred
     input_ids = inputs[:, 1:]  # (B, L-1), exclude the first input ID since we don't have logits for it 
@@ -75,7 +82,7 @@ def GRPO_step(batch):
     per_token_logps = per_token_logps[:,prompt_length-1:]
     ref_per_token_logps = batch['refs'].to(per_token_logps.device)
     per_token_kl = torch.exp(ref_per_token_logps - per_token_logps) - (ref_per_token_logps - per_token_logps) - 1
-    completion_mask = (inputs[:, prompt_length:] != tokenizer.pad_token_id).int()
+    completion_mask = (inputs[:, prompt_length:] != tokenizer.pad_token_id).float()
     if 'gen_logps' in batch:
         ratio = torch.exp(per_token_logps - batch['gen_logps'].to(engine.device))
         clipped_ratio = torch.clamp(ratio, 1-clip_param, 1+clip_param)
@@ -99,32 +106,29 @@ def gen_worker(Q, physics_device):
     torch.cuda.set_device(0)
     print(f"Generation worker process uses GPU {physics_device}")
     from vllm import LLM, SamplingParams
-    vllm_gen = LLM(model=model_path, gpu_memory_utilization=0.5)
+    vllm_gen = LLM(model=model_path, gpu_memory_utilization=0.7)
     ref_server_ver = 'tensor'  # don't worry, it will auto switch based on the first upload
 
+    #sampling_params = SamplingParams(n=num_pre_Q, temperature=0.9, max_tokens=600)
     gen_logps_sp = SamplingParams(temperature=0, top_p=1, max_tokens=1, prompt_logprobs=1)
-
     data_path = train_config['data_path']
     with open(data_path, 'r', encoding='utf-8') as file:
         dataset = json.load(file)
     QAs = [{'Q': item['instruction'], 'A': item['output']} for item in dataset] 
-    with open("./system_prompt_refine.txt", "r", encoding="utf-8") as f:
-        system_prompt_refine = f.read()
-    with open("./system_prompt_prev.txt", "r", encoding="utf-8") as f:
-        system_prompt_prev = f.read()   
+   
+    system_prompt_refine = prompt_config['refine_prompt']
+    system_prompt_prev = prompt_config['raw_prompt']
+    sampling_params = SamplingParams(n= num_pre_Q, temperature=0.9, max_tokens=1500)
 
-    sampling_params_stop = SamplingParams(n= num_pre_Q, temperature=0.9, max_tokens=1500)
-    
     
     def gen_answers(prompts, system_prompt):
         tip_text = []
         for x in prompts:
-            # for _ in range(num_pre_Q):
             tip_text.append(tokenizer.apply_chat_template([
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": x}], tokenize=False, add_generation_prompt=True))
         # answers = get_completions(tip_text,0)
-        voutputs = vllm_gen.generate(tip_text, sampling_params = sampling_params_stop, use_tqdm=False)
+        voutputs = vllm_gen.generate(tip_text, sampling_params = sampling_params, use_tqdm=False)
         answers = []
         for v in voutputs:
             for z in v.outputs:
@@ -132,20 +136,44 @@ def gen_worker(Q, physics_device):
 
         return answers
 
-    import httpx
-    def reward_correct(question, ground_truth, answer):
-        try:
-            ###使用卡或者api来判断生成的答案是否正确
-            timeout = httpx.Timeout(10.0, read = 30.0)
-            transport = httpx.HTTPTransport(retries=3)
-            client = OpenAI(base_url="http://localhost:8858/v1", api_key="dummy", http_client = httpx.Client(timeout=timeout, transport=transport))
-            sys_prompt = '''
-            You are a judger, you will judge the correctness of the answer to the question.
-            Below is a question, a ground truth answer, and an answer generated by an AI assistant, 
-            please rate the AI assistant's answers according to the question on a scale from 0 to 1.
-            Your output is just a number in the range from 0 to 1.
-            '''
-            usr_prompt = '''
+    def reward_format(answer):
+        pattern = r"^<think>.*?</think>[\n ]*?<answer>.*?</answer>$"
+        think_count = answer.count("<think>") + answer.count("</think>")
+        answer_count = answer.count("<answer>") + answer.count("</answer>")
+        # 先检查是否符合格式的要求
+        if not re.match(pattern, answer, re.DOTALL | re.VERBOSE) or think_count != 2 and answer_count != 2:
+            return -1
+        #再去检查refine标签是否在think标签中，如果不在，则返回-1， 否则返回1
+        think_match = re.search(r"<think>(.*?)</think>", answer, re.DOTALL)
+        if not think_match:
+            return -1
+        think_start, think_end = think_match.span()
+        # 第三步：查找所有 <refine> 标签并检查是否都在 <think> 内
+        for match in re.finditer(r"<refine>(.*?)</refine>", answer, re.DOTALL):
+            start, end = match.span()
+            if not (think_start <= start and end <= think_end):
+                return -1
+        return 1
+
+    def reward_refine(prev_answer, refined_answer, acc_scores, pre_scores):
+        refined_scores = []
+        pre_score_avg = sum(pre_scores) / len(pre_scores) if len(pre_scores)>0 else 0
+        for i in range(len(prev_answer)):
+            start_refine_cnt = refined_answer[i].count("<refine>")
+            end_refine_cnt = refined_answer[i].count("</refine>")
+            if start_refine_cnt == end_refine_cnt and start_refine_cnt > 0: 
+                if acc_scores[i] > pre_score_avg:
+                    refine_score = 1.0
+                elif acc_scores[i] < pre_score_avg:
+                    refine_score = -1.0
+                else:
+                    refine_score = -0.5
+            else:
+                    refine_score = 0.0
+            refined_scores.append(refine_score)
+        return refined_scores
+
+    prompt_template = '''
             ### Question:
             {Question}
 
@@ -155,63 +183,37 @@ def gen_worker(Q, physics_device):
             ### Answer:
             {Answer}
             '''
-            usr_prompt = usr_prompt.format(Question = question, Ground_Truth = ground_truth, Answer = answer)
-            sleep_time = random.uniform(1, 2)
-            time.sleep(sleep_time)
-            response = client.chat.completions.create(
+    client = OpenAI(base_url="http://10.176.64.144:8858/v1/", api_key="dummy")
+
+    def llm_eval(ans, example):
+        user_prompt = prompt_template.format(Question = example['q'], Ground_Truth = example['std'], Answer = ans)
+        response = client.chat.completions.create(
             model=client.models.list().data[0].id,
             messages=[
-                {"role": "system", "content": sys_prompt},
-                {"role": "user", "content": usr_prompt}],
-            temperature=0.0,
+                {"role": "system", "content": '''You are a judger, you will judge the correctness of the answer to the question. Below is a question, a ground truth answer, and an answer generated by an AI assistant, please rate the AI assistant's answers according to the question on a scale from 0 to 1. Your output is just a number in the range from 0 to 1.'''},
+                {"role": "user", "content": user_prompt}],
+            temperature=0.2,
             )
-            res = response.choices[0].message.content
-            try: 
-                reward = float(res)
+        res = response.choices[0].message.content
+        try: 
+            reward = float(res)
 
-            except:
-                numbers = re.findall(r"[-+]?\d*\.\d+|\d+", res)
-                if numbers:
-                # 取最后一个数字并转换
-                    last_number = numbers[-1]
-                    reward = float(last_number)
-                else:
-                # 如果没有找到任何数字，返回0
-                    reward = 0.0
-            finally:
-            # 确保奖励在0-1之间
-                reward = max(0.0, min(reward, 1.0))
-
-            return reward
-        
-        except APITimeoutError:
-            return 0.0001
-        except Exception as e:
-            print(f"An error occurred: {e}")
-            return 0.0001
-    
-    def reward_format(answer):
-        pattern = r"^<think>.*?</think>[\n ]*?<answer>.*?</answer>$"
-        think_count = answer.count("<think>") + answer.count("</think>")
-        answer_count = answer.count("<answer>") + answer.count("</answer>")
-        reward = 1.0 if re.match(pattern, answer, re.DOTALL | re.VERBOSE) and think_count == 2 and answer_count == 2 else 0.0
+        except:
+            numbers = re.findall(r"[-+]?\d*\.\d+|\d+", res)
+            if numbers:
+            # 取最后一个数字并转换
+                last_number = numbers[-1]
+                reward = float(last_number)
+            else:
+            # 如果没有找到任何数字，返回0
+                reward = 0.0
+        finally:
+        # 确保奖励在0-1之间
+            reward = max(0.0, min(reward, 1.0))
         return reward
 
-    def reward_refine(prev_answer, refined_answer, question, ground_truth):
-        start_refine_cnt = refined_answer.count("<refine>")
-        end_refine_cnt = refined_answer.count("</refine>")
-        new_score = reward_correct(question, ground_truth, refined_answer)
-        if start_refine_cnt == end_refine_cnt and start_refine_cnt > 0: 
-            prev_score = reward_correct(question, ground_truth, prev_answer)
-            if new_score > prev_score:
-                return 1.0, new_score
-            elif new_score < prev_score:
-                return -1.0, new_score
-            else:
-                return -0.5, new_score
-        else:
-            return 0.0, new_score
-
+    
+    
 
     def gen_samples(inputs):
         prompts = [x["Q"] for x in inputs]
@@ -222,27 +224,41 @@ def gen_worker(Q, physics_device):
         record_gen= []
         acc_scores= []
         format_scores =[]
-    
-        for i, inp in enumerate(inputs):
-            pre_Q_correct_acc = 0
-            pre_Q_correct_format = 0
+        total_rewards = []
+        for i, inp in enumerate(inputs): #多个问题 
+            eval_refine_contents= []
+            eval_prev_contents = []
+            cur_format_scores = []
+            cur_refine_answers= refined_answers[i * num_pre_Q:(i + 1) * num_pre_Q]
+            cur_prev_answers = prev_answers[i * num_pre_Q:(i + 1) * num_pre_Q]
+            # for j in range(i * num_pre_Q, (i + 1) * num_pre_Q): #一个问题的多个答案
+            for j in range(len(cur_refine_answers)):
+                format_score = reward_format(cur_refine_answers[j])
+                cur_format_scores.append(format_score)
+                eval_refine_contents.append({"q":inp['Q'],'std':inp['A'],"answer":cur_refine_answers[j],"sys_prompt":sys_prompt})
+                eval_prev_contents.append({"q":inp['Q'],'std':inp['A'],"answer":cur_prev_answers[j], "sys_prompt": sys_prompt})
+            #计算refine答案以及prev acc的得分
+            # print(f"!!!type:{eval_refine_contents} {eval_refine_contents[0]}")
+            # print(f"!!!type:{eval_prev_contents} {eval_prev_contents[1]}")
 
-            for j in range(i * num_pre_Q, (i + 1) * num_pre_Q):
+            # cur_acc_scores= requests.post(url=f"{eval_query_server}/generate", json = eval_refine_contents).json()
+            # cur_prev_acc_scores = requests.post(url=f"{eval_query_server}/generate", json = eval_prev_contents).json()
 
-                format_score = reward_format(refined_answers[j])
-                refine_score, acc_score = reward_refine(prev_answer = prev_answers[j], refined_answer = refined_answers[j], question = inp['Q'], ground_truth = inp['A'])
+            cur_acc_scores = [llm_eval(x['answer'], x) for x in eval_refine_contents]
+            cur_prev_acc_scores = [llm_eval(x['answer'], x) for x in eval_prev_contents]
 
-                acc_scores.append(acc_score)
-                format_scores.append(format_score)
-           
-                reward_all = acc_score + format_score + refine_score
-                rewards.append(reward_all)
-                record_gen.append({"question": inp, "refined_answer": refined_answers[j], "prev_answer": prev_answers[j], "acc_score":acc_score, "format_score": format_score, "refine_score":refine_score, "reward_all":reward_all})
-                if acc_score>0: pre_Q_correct_acc += 1
-                if format_score>0: pre_Q_correct_format +=1
-            scores.append((pre_Q_correct_acc, pre_Q_correct_format))
-        
-
+            # 计算当前refine答案的refine的得分
+            print(f"prev_answers:{len(cur_prev_answers)} refined_answers:{len(cur_refine_answers)} cur_acc_scores:{len(cur_acc_scores)} cur_prev_acc_scores:{len(cur_prev_acc_scores)}")
+            cur_refine_scores = reward_refine(cur_prev_answers,cur_refine_answers, cur_acc_scores, cur_prev_acc_scores)
+            #奖励得分有三部分组成相加
+            rewards = list(map(sum, zip(cur_format_scores, cur_acc_scores, cur_refine_scores)))
+            #记录下来这一组答案的得分情况：
+            for j in range(len(cur_refine_answers)):
+                record_gen.append({"question": inp, "refined_answer": cur_refine_answers[j], "prev_answer":cur_prev_answers[j], "prev_score": cur_prev_acc_scores[j], "acc_score":cur_acc_scores[j], "format_score": cur_format_scores[j], "refine_score":cur_refine_scores[j], "reward_all":rewards[j]})
+            total_rewards.extend(rewards)
+            format_scores.extend(cur_format_scores)
+            acc_scores.extend(cur_acc_scores)
+        #record the generation data the score
         if os.path.exists(gen_data_path) and os.path.getsize(gen_data_path) > 0:
             with open(gen_data_path, 'r') as f:
                 try:
@@ -258,7 +274,7 @@ def gen_worker(Q, physics_device):
         prompts_text = [tokenizer.apply_chat_template([
                 {"role": "system", "content": system_prompt_refine},
                 {"role": "user", "content": x}], tokenize=False, add_generation_prompt=True) for x in prompts]
-        return prompts_text, torch.tensor(rewards, dtype=torch.float32), refined_answers, torch.tensor(acc_scores, dtype=torch.float32), torch.tensor(format_scores, dtype=torch.float32), torch.tensor(scores, dtype=torch.float32)
+        return prompts_text, torch.tensor(total_rewards, dtype=torch.float32), refined_answers, torch.tensor(acc_scores, dtype=torch.float32), torch.tensor(format_scores, dtype=torch.float32), torch.tensor(scores, dtype=torch.float32)
 
     def try_update_model():
         try:
@@ -276,19 +292,27 @@ def gen_worker(Q, physics_device):
 
     fout = open(f'{record_path}', 'w')
     for it in range(999999999):
+       #按照顺序的方式来训练模型
+        # if it==0:
+        #     start = 0
+        # else:
+        #     start = 1000
 
         start = 0
         for j in range(start,len(QAs), Q_batch_size):
             inputs = QAs[j:j+Q_batch_size]
             if j % 2 == 0: 
                 try_update_model()
+            # inputs = random.sample(QAs, Q_batch_size)
             tic = time.time()
             prompt_inputs, rewards, answers, acc_scores, format_scores, scores = gen_samples(inputs)
+            # print(f'time: {time.time()-tic:.2f}s    ', 'scores:', scores)
             fout.write(str(scores) + '\n')
 
             if it % 5 == 0: 
                 fout.write(str(inputs[0])+"\n"+str(answers[0]) + '\n\n')
                 fout.flush()
+                # print('answers:', answers[0])
             ans_token_ids = tokenizer(answers, return_tensors="pt", padding=True, padding_side="right", add_special_tokens=False)['input_ids']
             for i, pp in enumerate(prompt_inputs):
                 prompt_ids = tokenizer(pp, return_tensors="pt", add_special_tokens=False)["input_ids"]
@@ -298,6 +322,7 @@ def gen_worker(Q, physics_device):
                 curr_rewards = rewards[i*num_pre_Q:(i+1)*num_pre_Q]
                 curr_acc_scores = acc_scores[i*num_pre_Q:(i+1)*num_pre_Q]
                 curr_format_scores = format_scores[i*num_pre_Q:(i+1)*num_pre_Q]
+                # pdb.set_trace()
                 if curr_rewards.max() - curr_rewards.min() < 1e-4: continue
 
                 if ref_server_ver == 'tensor':
@@ -317,6 +342,7 @@ def gen_worker(Q, physics_device):
                         if compute_gen_logps:
                             zz = vllm_gen.generate(prompt_token_ids=merged_ids.tolist(), sampling_params=gen_logps_sp, use_tqdm=False)
                             zz = [ xx.prompt_logprobs[plen:] if xx.prompt_logprobs is not None else [] for xx in zz]
+                            # zz = [xx.prompt_logprobs[plen:] for xx in zz]
                             if not zz:
                                 print("[!!! SPEICIAL CASE]")
                                 continue
@@ -350,9 +376,9 @@ if __name__ == '__main__':
 
     model = AutoModelForCausalLM.from_pretrained(model_path, 
             torch_dtype=torch.bfloat16, _attn_implementation="sdpa")
-
+    float_params = [p for p in model.parameters() if p.requires_grad and p.dtype.is_floating_point]
     engine, optimizer, _, _ = deepspeed.initialize(config=ds_config, model=model, 
-                                                model_parameters=model.parameters())
+                                                model_parameters=float_params)
 
     progress = range(1, all_steps+1)
     if dist.get_rank() == 0: 
@@ -363,8 +389,8 @@ if __name__ == '__main__':
     total_format_correct = 0
     total_num = 0
 
-    wandb.login(key=wandb_key)
-    wandb.init(project=wandb_project, name=wandb_name)
+    # wandb.login(key=wandb_key)
+    # wandb.init(project=wandb_project, name=wandb_name)
     
     for step in progress:
         batch = get_batch()
@@ -382,10 +408,10 @@ if __name__ == '__main__':
             total_format_correct += ( batch['format_scores'] > 0).sum().item()
 
             total_num += batch['inputs'].shape[0]
-            wandb.log({"avg_output_token_lenght": float(total_output_length / total_num),
-                        "acc_correct_ratio": float(total_acc_correct / total_num),
-                        "format_correct_ratio": float(total_format_correct / total_num),
-                     })
+            # wandb.log({"avg_output_token_lenght": float(total_output_length / total_num),
+            #             "acc_correct_ratio": float(total_acc_correct / total_num),
+            #             "format_correct_ratio": float(total_format_correct / total_num),
+            #          })
         loss = GRPO_step(batch)
         loss = loss.to(torch.float32) 
         engine.backward(loss)
