@@ -140,15 +140,12 @@ def gen_worker(Q, physics_device):
         pattern = r"^<think>.*?</think>[\n ]*?<answer>.*?</answer>$"
         think_count = answer.count("<think>") + answer.count("</think>")
         answer_count = answer.count("<answer>") + answer.count("</answer>")
-        # 先检查是否符合格式的要求
         if not re.match(pattern, answer, re.DOTALL | re.VERBOSE) or think_count != 2 and answer_count != 2:
             return -1
-        #再去检查refine标签是否在think标签中，如果不在，则返回-1， 否则返回1
         think_match = re.search(r"<think>(.*?)</think>", answer, re.DOTALL)
         if not think_match:
             return -1
         think_start, think_end = think_match.span()
-        # 第三步：查找所有 <refine> 标签并检查是否都在 <think> 内
         for match in re.finditer(r"<refine>(.*?)</refine>", answer, re.DOTALL):
             start, end = match.span()
             if not (think_start <= start and end <= think_end):
@@ -201,14 +198,11 @@ def gen_worker(Q, physics_device):
         except:
             numbers = re.findall(r"[-+]?\d*\.\d+|\d+", res)
             if numbers:
-            # 取最后一个数字并转换
                 last_number = numbers[-1]
                 reward = float(last_number)
             else:
-            # 如果没有找到任何数字，返回0
                 reward = 0.0
         finally:
-        # 确保奖励在0-1之间
             reward = max(0.0, min(reward, 1.0))
         return reward
 
@@ -225,13 +219,13 @@ def gen_worker(Q, physics_device):
         acc_scores= []
         format_scores =[]
         total_rewards = []
-        for i, inp in enumerate(inputs): #多个问题 
+        for i, inp in enumerate(inputs): 
             eval_refine_contents= []
             eval_prev_contents = []
             cur_format_scores = []
             cur_refine_answers= refined_answers[i * num_pre_Q:(i + 1) * num_pre_Q]
             cur_prev_answers = prev_answers[i * num_pre_Q:(i + 1) * num_pre_Q]
-            # for j in range(i * num_pre_Q, (i + 1) * num_pre_Q): #一个问题的多个答案
+            # for j in range(i * num_pre_Q, (i + 1) * num_pre_Q): 
             for j in range(len(cur_refine_answers)):
                 format_score = reward_format(cur_refine_answers[j])
                 cur_format_scores.append(format_score)
@@ -242,12 +236,9 @@ def gen_worker(Q, physics_device):
             cur_acc_scores = [llm_eval(x['answer'], x) for x in eval_refine_contents]
             cur_prev_acc_scores = [llm_eval(x['answer'], x) for x in eval_prev_contents]
 
-            # 计算当前refine答案的refine的得分
             print(f"prev_answers:{len(cur_prev_answers)} refined_answers:{len(cur_refine_answers)} cur_acc_scores:{len(cur_acc_scores)} cur_prev_acc_scores:{len(cur_prev_acc_scores)}")
             cur_refine_scores = reward_refine(cur_prev_answers,cur_refine_answers, cur_acc_scores, cur_prev_acc_scores)
-            #奖励得分有三部分组成相加
             rewards = list(map(sum, zip(cur_format_scores, cur_acc_scores, cur_refine_scores)))
-            #记录下来这一组答案的得分情况：
             for j in range(len(cur_refine_answers)):
                 record_gen.append({"question": inp, "refined_answer": cur_refine_answers[j], "prev_answer":cur_prev_answers[j], "prev_score": cur_prev_acc_scores[j], "acc_score":cur_acc_scores[j], "format_score": cur_format_scores[j], "refine_score":cur_refine_scores[j], "reward_all":rewards[j]})
             total_rewards.extend(rewards)
@@ -287,7 +278,6 @@ def gen_worker(Q, physics_device):
 
     fout = open(f'{record_path}', 'w')
     for it in range(999999999):
-       #按照顺序的方式来训练模型
         # if it==0:
         #     start = 0
         # else:
