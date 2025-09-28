@@ -1,12 +1,19 @@
-# A Stitch in Time Saves Nine: Proactive In-Process Self-Refinement for Language Models
-[[📄 Paper (PDF)]](./figs/PASR_0925.pdf) 
+<!-- # A Stitch in Time Saves Nine: Proactive In-Process Self-Refinement for Language Models
+[[📄 Paper (PDF)]](./figs/PASR_0925.pdf)  -->
+<h1 align="center">A Stitch in Time Saves Nine: Proactive In-Process Self-Refinement for Language Models</h1>
+
+<div align="center"> 
+
+[![Paper](https://img.shields.io/badge/Paper-arXiv-b5212f.svg?logo=arxiv)](./figs/PASR_0925.pdf)
+[![HuggingFace](https://img.shields.io/badge/Data&Model-HuggingFace-ffd21e.svg?logo=huggingface)]() 
+
+</div>
 - We propose PASR, a method that enables proactive self-refinement throughout the generation process via reinforcement learning.
 - We design a comparison-based reward strategy to assess the effectiveness of proactive self-refinement and guide model behavior during training.
 - We empirically demonstrate the effectiveness and efficiency of PASR across a diverse set of tasks. In particular, on Qwen3-8B, PASR significantly reduces average token consumption by 41.6\% compared to the standard generation method, while also achieving a 8.2\% improvement in accuracy.
 
-<div style="text-align: center;">
+<div align=center>
     <img src="./figs/pasr_intro.jpg" alt="intro" width = 600/>
-
 </div>
 
 ## Install Dependencies
