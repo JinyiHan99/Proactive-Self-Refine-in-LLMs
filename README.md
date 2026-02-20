@@ -1,79 +1,115 @@
-<!-- # A Stitch in Time Saves Nine: Proactive In-Process Self-Refinement for Language Models
-[[📄 Paper (PDF)]](./figs/PASR_0925.pdf)  -->
 <h1 align="center">A Stitch in Time Saves Nine: Proactive In-Process Self-Refinement for Language Models</h1>
 
-<div align="center"> 
+<div align="center">
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv-b5212f.svg?logo=arxiv)](./figs/PASR_0925.pdf)
-[![HuggingFace](https://img.shields.io/badge/Data&Model-HuggingFace-ffd21e.svg?logo=huggingface)]() 
-
-</div>
-- We propose PASR, a method that enables proactive self-refinement throughout the generation process via reinforcement learning.
-- We design a comparison-based reward strategy to assess the effectiveness of proactive self-refinement and guide model behavior during training.
-- We empirically demonstrate the effectiveness and efficiency of PASR across a diverse set of tasks. In particular, on Qwen3-8B, PASR significantly reduces average token consumption by 41.6\% compared to the standard generation method, while also achieving a 8.2\% improvement in accuracy.
-
-<div align=center>
-    <img src="./figs/pasr_intro.jpg" alt="intro" width = 600/>
+[![Paper](https://img.shields.io/badge/Paper-PDF-b5212f.svg?logo=adobe-acrobat-reader&logoColor=white)](./figs/PASR_0925.pdf)
 </div>
 
-## Install Dependencies
+## 📢 Latest News
 
-```
+- **2026-02**: Our paper "A Stitch in Time Saves Nine: Proactive In-Process Self-Refinement for Language Models" has been accepted by **ICLR 2026** ! 🎉
+
+## 📌 Overview
+
+We propose **PASR** (Proactive In-Process Self-Refinement), a novel method that enables language models to proactively refine their outputs *during* the generation process via reinforcement learning. Unlike traditional post-hoc refinement approaches, PASR intervenes early to correct errors as they emerge, significantly improving efficiency and quality.
+
+### Key Contributions
+
+- **Proactive Refinement Strategy**: Enables self-refinement throughout the generation process rather than just at the end
+- **Comparison-Based Reward Function**: Designing a novel reward mechanism to assess refinement effectiveness and guide training
+- **Empirical Effectiveness**: Demonstrating significant improvements across diverse tasks. On Qwen3-8B:
+  - **41.6% reduction** in average token consumption
+  - **8.2% improvement** in accuracy
+
+<div align="center">
+    <img src="./figs/pasr_intro.jpg" alt="PASR Introduction" width="600"/>
+   
+</div>
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- NVIDIA GPU with CUDA support (recommended: ≥16GB VRAM)
+- Python 3.10+
+- PyTorch 2.5+
+
+### Installation
+
+```bash
+# Create conda environment
 conda create -n PASR python=3.10.9
 conda activate PASR
+
+# Install PyTorch (CUDA 12.4)
 conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 pytorch-cuda=12.4 -c pytorch -c nvidia
+
+# Install other dependencies
 pip install -r requirements.txt
 ```
-## Quick Start
 
-```
+### Training
+
+```bash
 cd PASR
 
-# Start the evaluation model to evaluate the quality of the rollout samples
+# Step 1: Start the evaluation model server for rollout quality assessment
 bash vllm_empoy.sh
 
-# Start the GRPO refinement server model
+# Step 2: Start the GRPO refinement server
 CUDA_VISIBLE_DEVICES=1 python ref_server.py
 
-# Start the PASR-GRPO training with DeepSpeed
+# Step 3: Start PASR-GRPO training with DeepSpeed
 CUDA_VISIBLE_DEVICES=2,3 deepspeed pasr_main.py
 ```
 
-You can configure the training parameters in ``PASR/config.py``. 
+### Configuration
 
-| Parameter     | Description                                                                                                                                                              |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `model_path`  | Path to the base language model (e.g., `"Qwen2.5-7B/"`). This is the model you fine-tune or refine during training.                                                      |
-| `data_path`   | Path to the training dataset.  
-| `gen_device`   | GPU ID used specifically for generation (e.g., 5), often different from training GPU.   |
-| `Q_batch_size` | Number of generations per batch during rollout.                                         |
-| `num_pre_Q`    | Group size for candidate generations (e.g., 8), used in candidate filtering or scoring. |     
-| `eval_prompt` | Prompt template used for evaluation. It contains a question, ground truth answer, and AI-generated answer, and asks for binary scoring (1 for correct, 0 for incorrect). |
-| `train_batch_size`  | Batch size for training steps (e.g., 2).                                                                                  |
-| `all_steps`         | Total number of training steps (e.g., 3000).                                                                              |
-| `ref_server` | URL of the reference model server used for evaluation or scoring. |
-| `port`       | Port number for the local reference server (default is 59809).    |
-| `wandb_key`     | Your wandb API key for authentication (keep this private). |
+All training parameters are configured in `PASR/config.py`. Key parameters include:
 
+| Parameter          | Description                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| `model_path`      | Path to the base language model (e.g., `"Qwen2.5-7B/"`)                     |
+| `data_path`       | Path to the training dataset                                                |
+| `gen_device`      | GPU ID for generation (separate from training GPU)                          |
+| `Q_batch_size`    | Number of generations per batch during rollout                              |
+| `num_pre_Q`       | Group size for candidate generations (used in scoring/filtering)            |
+| `eval_prompt`     | Prompt template for binary evaluation (1 for correct, 0 for incorrect)      |
+| `train_batch_size`| Training batch size (e.g., 2)                                               |
+| `all_steps`       | Total training steps (e.g., 3000)                                           |
+| `ref_server`      | URL of the reference model server for evaluation                            |
+| `port`            | Port number for local reference server (default: 59809)                      |
+| `wandb_key`       | Weights & Biases API key for experiment tracking (keep private)             |
 
-Notes:
-- Ensure gen_device does not conflict with the GPU used for training if running both simultaneously.
-- Use wandb to monitor training progress and generation quality in real time.
+**Notes**:
+- Ensure `gen_device` does not conflict with training GPU if running simultaneously
+- Use Weights & Biases to monitor training progress and generation quality in real-time
 
-## Evaluation
+## 📊 Evaluation
+
+### Inference
+
 ```bash
-# inference
 cd eval
-CUDA_VISIBLE_DEVICES=1 python inference.py --model_name your_ckp --data_names you_can_choice_multipe_dataset --output_path ./eval_results
 
-# get the acc 
+# Run inference on trained model
+CUDA_VISIBLE_DEVICES=1 python inference.py \
+  --model_name your_checkpoint \
+  --data_names dataset1 dataset2 \
+  --output_path ./eval_results
+
+# Evaluate using VLLM
 python eval_with_vllm
 
-# calculate the final average score
+# Calculate final average scores
 python get_scores.py
 ```
-We use the following generation configuration during evaluation:
-``` python
+
+### Evaluation Configuration
+
+We use the following generation parameters during evaluation:
+
+```python
 sampling_params_stop = SamplingParams(
     n=1,
     temperature=0,
@@ -81,6 +117,20 @@ sampling_params_stop = SamplingParams(
 )
 ```
 
+## 📁 Data
 
-# Data
-We also provide the training data and test data in the `/data` fold.
+We provide comprehensive training and test datasets in the `/data` directory. The datasets cover diverse task types to ensure robust evaluation.
+
+## 📚 References
+
+```bibtex
+@misc{han2025stitchtimesavesnine,
+      title={A Stitch in Time Saves Nine: Proactive Self-Refinement for Language Models}, 
+      author={Jinyi Han and Xinyi Wang and Haiquan Zhao and Tingyun li and Zishang Jiang and Sihang Jiang and Jiaqing Liang and Xin Lin and Weikang Zhou and Zeye Sun and Fei Yu and Yanghua Xiao},
+      year={2025},
+      eprint={2508.12903},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2508.12903}, 
+}
+```
