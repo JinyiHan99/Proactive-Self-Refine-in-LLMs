@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Paper](https://img.shields.io/badge/Paper-PDF-b5212f.svg?logo=adobe-acrobat-reader&logoColor=white)](./figs/PASR_0925.pdf)
+[![Paper](https://img.shields.io/badge/Paper-PDF-b5212f.svg?logo=adobe-acrobat-reader&logoColor=white)](./figs/PASR.pdf)
 </div>
 
 ## 📢 Latest News
@@ -23,7 +23,6 @@ We propose **PASR** (Proactive In-Process Self-Refinement), a novel method that 
 
 <div align="center">
     <img src="./figs/pasr_intro.jpg" alt="PASR Introduction" width="600"/>
-   
 </div>
 
 ## 🚀 Quick Start
